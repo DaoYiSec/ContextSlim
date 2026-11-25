@@ -1,0 +1,8 @@
+<!-- Optional snippet for AGENTS.md / GEMINI.md / .cursor/rules/context-slim.mdc -->
+## ContextSlim Token Discipline
+
+- **Never dump raw scans, HTTP HTML, or test logs**: run tests/builds via `cslim run -- <cmd>` (preserves exit code) or pipe `ffuf`/`gobuster`/`httpx`/`nmap`/`sqlmap`/`nuclei`/`semgrep`/`curl`/`rg` through `cslim compress --mode anomaly|nmap|sqlmap|sast|http|grep|testlog`.
+- **Skeleton / Slice before Read**: for files >150 lines, fetch `[Header/Imports]` + target symbols in one call via `cslim slice <file> --symbols fn1,fn2`, or inspect `cslim compress --mode skeleton --input <file>` before bounded reads.
+- **Security diffs**: review patches with `git diff | cslim diff --profile audit` so 1-line auth/guard removals are prioritized over large refactors.
+- **No LLM loops for batch probing**: probe lists of URLs/endpoints/params with one script, never turn-by-turn agent tool calls.
+- **Externalize state**: track targets, auth state, confirmed findings, dead-ends, repo maps, and entrypoints in `.context-slim/ledger.md` via `cslim ledger`.

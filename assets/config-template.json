@@ -1,0 +1,62 @@
+{
+  "context_window_presets": {
+    "200k": {
+      "warn_tokens": 120000,
+      "hard_tokens": 170000,
+      "rearm_step": 25000
+    },
+    "1m": {
+      "warn_tokens": 200000,
+      "hard_tokens": 400000,
+      "rearm_step": 50000
+    }
+  },
+  "active_preset": "200k",
+  "read_guard": {
+    "max_unbounded_lines": 200,
+    "max_explicit_limit": 250,
+    "skeleton_preview_lines": 60,
+    "blocked_globs": [
+      "*.lock",
+      "package-lock.json",
+      "yarn.lock",
+      "pnpm-lock.yaml",
+      "*.min.js",
+      "*.min.css",
+      "*.map",
+      "dist/*",
+      "build/*"
+    ]
+  },
+  "compress": {
+    "default_max_lines": 120,
+    "default_max_line_chars": 320,
+    "anomaly_min_cluster": 3,
+    "testlog_max_failures": 3,
+    "run_passthrough_max_lines": 40,
+    "run_passthrough_max_chars": 4000
+  },
+  "diff_budget": {
+    "default_tokens": 8000,
+    "dev_exclude_globs": [
+      "*.lock",
+      "package-lock.json",
+      "yarn.lock",
+      "pnpm-lock.yaml",
+      "go.sum",
+      "Cargo.lock",
+      "*.min.js",
+      "*.min.css",
+      "*.map",
+      "dist/*",
+      "build/*",
+      "vendor/*",
+      "*.snap"
+    ]
+  },
+  "delegation": {
+    "block_nested_subagents": true,
+    "require_model_on_scoped_subagents": true,
+    "max_subagent_output_tokens": 2000
+  }
+}
